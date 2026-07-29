@@ -1,0 +1,1183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dr. Umesh Kumar | Multi-Omics & Biomarker Researcher</title>
+  <meta name="description" content="Research portfolio of Assistant Professor Dr. Umesh Kumar (SR University) — metabolomics, lipidomics, multi-omics integration, biomarker discovery.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #fafaf9;
+      --bg-alt: #f0f2ed;
+      --bg-card: #ffffff;
+      --text: #1a1a1a;
+      --text-secondary: #5a5f66;
+      --text-muted: #8e9399;
+      --primary: #0f3b2a;
+      --primary-rgb: 15, 59, 42;
+      --primary-light: #1a6b4a;
+      --accent: #2d8f6c;
+      --accent-rgb: 45, 143, 108;
+      --accent-gold: #b8944a;
+      --accent-gold-rgb: 184, 148, 74;
+      --border: #e4e6e0;
+      --border-light: #eef0eb;
+      --shadow: 0 1px 3px rgba(0,0,0,0.04), 0 4px 16px rgba(0,0,0,0.04);
+      --shadow-hover: 0 4px 12px rgba(0,0,0,0.06), 0 12px 40px rgba(0,0,0,0.06);
+      --radius-sm: 6px;
+      --radius-md: 12px;
+      --radius-lg: 20px;
+      --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      --font-heading: 'Playfair Display', Georgia, 'Times New Roman', serif;
+      --transition: 300ms cubic-bezier(0.25, 0.1, 0.25, 1);
+      --transition-slow: 600ms cubic-bezier(0.25, 0.1, 0.25, 1);
+      --max-width: 1120px;
+    }
+    [data-theme="dark"] {
+      --bg: #111714;
+      --bg-alt: #161f1a;
+      --bg-card: #1a241f;
+      --text: #e6eae7;
+      --text-secondary: #a3b0a8;
+      --text-muted: #6d7d73;
+      --primary: #6fcf97;
+      --primary-rgb: 111, 207, 151;
+      --primary-light: #5bbf89;
+      --accent: #4ec489;
+      --accent-rgb: 78, 196, 137;
+      --accent-gold: #d4a854;
+      --accent-gold-rgb: 212, 168, 84;
+      --border: #2a3830;
+      --border-light: #1f2b25;
+      --shadow: 0 1px 3px rgba(0,0,0,0.3), 0 4px 16px rgba(0,0,0,0.3);
+      --shadow-hover: 0 4px 12px rgba(0,0,0,0.4), 0 12px 40px rgba(0,0,0,0.4);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; scroll-padding-top: 80px; font-size: 16px; }
+    body {
+      font-family: var(--font-body); background: var(--bg); color: var(--text);
+      line-height: 1.65; overflow-x: hidden; -webkit-font-smoothing: antialiased;
+      animation: bodyFade 600ms ease;
+    }
+    @keyframes bodyFade { from { opacity: 0; } to { opacity: 1; } }
+    ::selection { background: rgba(var(--accent-rgb), 0.2); color: var(--text); }
+    :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+    button { font: inherit; color: inherit; cursor: pointer; border: none; background: none; }
+    ul { list-style: none; }
+    .container { width: min(100% - 48px, var(--max-width)); margin-inline: auto; }
+
+    /* Progress Bar */
+    .progress-bar {
+      position: fixed; top: 0; left: 0; height: 3px;
+      background: linear-gradient(90deg, var(--accent), var(--primary-light));
+      z-index: 200; width: 0; transition: width 50ms linear; will-change: width;
+    }
+
+    /* Theme Toggle */
+    .theme-toggle {
+      position: fixed; bottom: 24px; right: 24px; z-index: 150;
+      width: 44px; height: 44px; border-radius: 50%;
+      background: var(--bg-card); border: 1px solid var(--border);
+      box-shadow: var(--shadow-hover); display: grid; place-items: center;
+      cursor: pointer; transition: all var(--transition); color: var(--text-secondary);
+    }
+    .theme-toggle:hover { transform: scale(1.1); color: var(--accent); border-color: var(--accent); }
+    .theme-toggle__icon { width: 20px; height: 20px; }
+
+    /* Header */
+    .header {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(250,250,249,0.85); backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid transparent; transition: all var(--transition);
+    }
+    [data-theme="dark"] .header { background: rgba(17,23,20,0.85); }
+    .header--scrolled { border-bottom-color: var(--border); background: rgba(250,250,249,0.95); }
+    [data-theme="dark"] .header--scrolled { background: rgba(17,23,20,0.95); }
+    .header__inner { display: flex; align-items: center; justify-content: space-between; height: 68px; }
+    .header__logo { display: flex; align-items: center; gap: 0.65rem; }
+    .header__logo-mark {
+      display: grid; place-items: center; width: 38px; height: 38px;
+      border-radius: 10px; background: var(--primary); color: #fff;
+      font-family: var(--font-heading); font-weight: 700; font-size: 0.8rem;
+    }
+    .header__logo-mark svg { width: 20px; height: 20px; }
+    .header__logo-text { display: grid; line-height: 1.2; }
+    .header__logo-name { font-weight: 700; font-size: 0.9rem; color: var(--text); }
+    .header__logo-role { font-size: 0.72rem; color: var(--text-muted); font-weight: 500; }
+    .header__nav { display: flex; align-items: center; gap: 0.15rem; }
+    .header__link {
+      padding: 0.5rem 0.85rem; border-radius: 8px; color: var(--text-secondary);
+      font-size: 0.88rem; font-weight: 500; transition: all var(--transition);
+    }
+    .header__link:hover { color: var(--text); background: rgba(0,0,0,0.04); }
+    .header__link--active { color: var(--primary); font-weight: 600; }
+    .header__toggle {
+      display: none; flex-direction: column; justify-content: center;
+      align-items: center; width: 40px; height: 40px; gap: 4px;
+      border-radius: 8px; background: rgba(0,0,0,0.04);
+    }
+    .header__toggle span { display: block; width: 18px; height: 2px; background: var(--text); border-radius: 2px; transition: all var(--transition); }
+    .header__toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+    .header__toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+    .header__toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+
+    /* Hero */
+    .hero {
+      position: relative; min-height: 100vh; display: flex; align-items: center;
+      padding: 7rem 0 4rem; overflow: hidden;
+      background: linear-gradient(135deg, #fafaf9 0%, #f0f4ef 50%, #eaf0e8 100%);
+    }
+    [data-theme="dark"] .hero { background: linear-gradient(135deg, #111714 0%, #161f1a 50%, #1a241f 100%); }
+    .hero::before {
+      content: ''; position: absolute; top: -50%; right: -20%;
+      width: 800px; height: 800px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(var(--accent-rgb), 0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero::after {
+      content: ''; position: absolute; bottom: -30%; left: -10%;
+      width: 600px; height: 600px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(var(--primary-rgb), 0.05) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero__grid { position: relative; z-index: 1; display: grid; grid-template-columns: 380px 1fr; gap: 4rem; align-items: center; }
+    .hero__image-wrap { display: flex; flex-direction: column; align-items: center; gap: 1.25rem; }
+    .hero__image-frame {
+      position: relative; width: 340px; height: 420px; border-radius: var(--radius-lg);
+      overflow: hidden; box-shadow: var(--shadow-hover); border: 3px solid #fff;
+    }
+    [data-theme="dark"] .hero__image-frame { border-color: #1a241f; }
+    .hero__image-frame::after {
+      content: ''; position: absolute; inset: 0; border-radius: inherit;
+      box-shadow: inset 0 0 0 1px rgba(0,0,0,0.04); pointer-events: none;
+    }
+    .hero__image { width: 100%; height: 100%; object-fit: cover; }
+    .hero__badge-row { display: flex; gap: 0.5rem; flex-wrap: wrap; justify-content: center; }
+    .hero__badge {
+      padding: 0.3rem 0.8rem; border-radius: 999px; background: var(--primary);
+      color: #fff; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.02em;
+    }
+    .hero__content { position: relative; }
+    .hero__label { font-size: 0.78rem; font-weight: 600; color: var(--accent); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.75rem; }
+    .hero__name {
+      font-family: var(--font-heading); font-size: clamp(2.5rem, 5vw, 3.6rem);
+      font-weight: 700; line-height: 1.1; letter-spacing: -0.02em;
+      color: var(--primary); margin-bottom: 0.75rem;
+    }
+    .hero__name .subtitle { display: block; font-size: 0.5em; font-family: var(--font-body); font-weight: 500; letter-spacing: 0; color: var(--accent); margin-top: 0.3rem; }
+    .hero__desc { font-size: clamp(1rem, 1.4vw, 1.1rem); color: var(--text-secondary); max-width: 560px; line-height: 1.7; margin-bottom: 2rem; }
+    .hero__stats { display: flex; gap: 2.5rem; margin-bottom: 2rem; flex-wrap: wrap; }
+    .hero__stat-value { display: block; font-family: var(--font-heading); font-size: clamp(1.6rem, 2.5vw, 2.2rem); font-weight: 700; color: var(--primary); line-height: 1; }
+    .hero__stat-label { display: block; font-size: 0.78rem; color: var(--text-muted); font-weight: 500; margin-top: 0.2rem; text-transform: uppercase; letter-spacing: 0.05em; }
+    .hero__actions { display: flex; gap: 0.6rem; flex-wrap: wrap; }
+    .hero__meta-line { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.5rem; }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      min-height: 44px; padding: 0.6rem 1.3rem; border-radius: 999px;
+      font-size: 0.88rem; font-weight: 600; transition: all var(--transition);
+      border: 1.5px solid transparent;
+    }
+    .btn--outline {
+      border-color: var(--border); color: var(--text-secondary);
+      background: rgba(255,255,255,0.6);
+    }
+    [data-theme="dark"] .btn--outline { background: rgba(0,0,0,0.2); }
+    .btn--outline:hover { border-color: var(--primary); color: var(--primary); background: rgba(var(--primary-rgb), 0.04); transform: translateY(-1px); }
+    .btn--primary { background: var(--primary); color: #fff; }
+    .btn--primary:hover { background: #0d4f35; transform: translateY(-1px); box-shadow: 0 4px 16px rgba(var(--primary-rgb), 0.25); }
+    .btn--accent {
+      border-color: transparent; color: #3a5a4a; background: rgba(58,90,74,0.08);
+      font-size: 0.82rem; padding: 0.35rem 0.9rem; min-height: 34px;
+    }
+    [data-theme="dark"] .btn--accent { color: #8fc4a8; background: rgba(143,196,168,0.1); }
+    .btn--accent:hover { border-color: rgba(58,90,74,0.2); background: rgba(58,90,74,0.14); transform: translateY(-1px); }
+
+    /* Sections */
+    .section { padding: 6rem 0; position: relative; }
+    .section--alt { background: var(--bg-alt); position: relative; }
+    .section--alt::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--accent), transparent);
+      opacity: 0.15;
+    }
+    .section__header { margin-bottom: 3rem; max-width: 900px; }
+    .section__number {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      font-family: var(--font-heading); font-size: 0.9rem; font-weight: 600;
+      color: var(--accent-gold); letter-spacing: 0.06em; margin-bottom: 0.5rem;
+    }
+    .section__number::after {
+      content: ''; display: inline-block; width: 24px; height: 2px;
+      background: linear-gradient(90deg, var(--accent-gold), transparent);
+      opacity: 0.5;
+    }
+    .section__title {
+      font-family: var(--font-heading); font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+      font-weight: 700; line-height: 1.15; letter-spacing: -0.02em;
+      color: var(--primary); margin-bottom: 0.75rem;
+    }
+    .section__subtitle { font-size: 1.05rem; color: var(--text-secondary); max-width: 800px; line-height: 1.6; }
+    .section__text { font-size: 0.95rem; color: var(--text-secondary); max-width: 900px; line-height: 1.8; margin-bottom: 0.75rem; }
+
+    /* Research Grid */
+    .research-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem; }
+    .research-card {
+      padding: 2rem; background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--radius-lg); box-shadow: var(--shadow);
+      transition: all var(--transition-slow); position: relative; overflow: hidden;
+    }
+    .research-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--accent), var(--primary-light));
+      opacity: 0; transition: opacity var(--transition);
+    }
+    .research-card:hover { border-color: rgba(var(--accent-rgb), 0.2); box-shadow: var(--shadow-hover); transform: translateY(-2px); }
+    .research-card:hover::before { opacity: 1; }
+    .research-card__icon {
+      width: 44px; height: 44px; margin-bottom: 1rem; border-radius: 12px;
+      background: rgba(var(--accent-rgb), 0.08);
+      display: grid; place-items: center; transition: all var(--transition);
+      font-size: 1.4rem;
+    }
+    .research-card:hover .research-card__icon { background: rgba(var(--accent-rgb), 0.15); border-radius: 14px; transform: scale(1.05); }
+    .research-card__title { font-family: var(--font-heading); font-size: 1.25rem; font-weight: 700; color: var(--primary); margin-bottom: 0.5rem; line-height: 1.2; }
+    .research-card__desc { font-size: 0.92rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 1rem; }
+    .research-card__tags { display: flex; flex-wrap: wrap; gap: 0.35rem; }
+    .research-card__tag { padding: 0.2rem 0.6rem; border-radius: 999px; font-size: 0.72rem; font-weight: 600; background: rgba(var(--accent-rgb), 0.08); color: var(--accent); }
+
+    /* Personal Details Grid */
+    .detail-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.75rem; }
+    .detail-item { padding: 0.75rem 1rem; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-sm); font-size: 0.88rem; color: var(--text-secondary); }
+    .detail-item strong { color: var(--text); font-weight: 600; margin-right: 0.5rem; }
+
+    /* Timeline */
+    .timeline { position: relative; padding-left: 200px; }
+    .timeline::before {
+      content: ''; position: absolute; left: 200px; top: 0; bottom: 0; width: 2px;
+      background: linear-gradient(180deg, var(--accent) 0%, var(--primary-light) 60%, transparent 100%);
+      opacity: 0.25;
+    }
+    .timeline-item { position: relative; padding-bottom: 2.5rem; }
+    .timeline-item:last-child { padding-bottom: 0; }
+    .timeline-item::before {
+      content: ''; position: absolute; left: -200px; top: 6px;
+      width: 14px; height: 14px; border-radius: 50%; background: var(--accent);
+      border: 3px solid var(--bg); box-shadow: 0 0 0 2px var(--accent), 0 2px 8px rgba(var(--accent-rgb), 0.2);
+      z-index: 1;
+    }
+    .timeline-item__date {
+      position: absolute; left: -200px; top: 4px; width: 170px;
+      text-align: right; padding-right: 28px; font-size: 0.88rem;
+      font-weight: 700; color: var(--primary); line-height: 1.3;
+    }
+    .timeline-item__date-sub { display: block; font-size: 0.72rem; font-weight: 500; color: var(--text-muted); margin-top: 0.1rem; }
+    .timeline-item__card {
+      padding: 1.5rem 1.75rem; background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--radius-md); box-shadow: var(--shadow); transition: all var(--transition);
+      border-left: 3px solid transparent;
+    }
+    .timeline-item__card:hover { box-shadow: var(--shadow-hover); border-color: var(--border); border-left-color: var(--accent); transform: translateX(4px); }
+    .timeline-item__title { font-family: var(--font-heading); font-size: 1.15rem; font-weight: 700; color: var(--primary); margin-bottom: 0.2rem; }
+    .timeline-item__org { font-size: 0.92rem; color: var(--accent); font-weight: 600; margin-bottom: 0.5rem; }
+    .timeline-item__desc { font-size: 0.88rem; color: var(--text-secondary); line-height: 1.7; }
+
+    /* Skills */
+    .skills-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+    .skill-card {
+      padding: 1.25rem; background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--radius-md); box-shadow: var(--shadow); transition: all var(--transition);
+    }
+    .skill-card:hover { border-color: var(--accent); box-shadow: var(--shadow-hover); transform: translateY(-2px); }
+    .skill-card__icon { font-size: 1.5rem; margin-bottom: 0.5rem; }
+    .skill-card__title { font-family: var(--font-heading); font-size: 1rem; font-weight: 700; color: var(--primary); margin-bottom: 0.75rem; }
+    .skill-card__list { display: flex; flex-wrap: wrap; gap: 0.35rem; }
+    .skill-card__list li { padding: 0.2rem 0.6rem; border-radius: 999px; background: rgba(var(--accent-rgb), 0.06); border: 1px solid rgba(var(--accent-rgb), 0.1); font-size: 0.78rem; color: var(--text-secondary); font-weight: 500; }
+
+    /* Publications */
+    .pub-list { display: grid; gap: 0.85rem; }
+    .pub-card {
+      padding: 1.25rem 1.5rem; border-radius: var(--radius-md);
+      background: var(--bg-card); border: 1px solid var(--border);
+      box-shadow: var(--shadow); transition: all var(--transition); position: relative; overflow: hidden;
+    }
+    .pub-card::before {
+      content: ''; position: absolute; top: 0; left: 0; width: 3px; height: 100%;
+      background: linear-gradient(180deg, var(--accent), var(--primary-light));
+      opacity: 0; transition: opacity var(--transition);
+    }
+    .pub-card:hover { border-color: rgba(var(--accent-rgb), 0.15); box-shadow: var(--shadow-hover); transform: translateX(3px); }
+    .pub-card:hover::before { opacity: 0.6; }
+    .pub-card__title { font-family: var(--font-heading); font-size: 1.05rem; font-weight: 600; line-height: 1.4; margin-bottom: 0.35rem; color: var(--primary); }
+    .pub-card__journal { font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 0.5rem; font-weight: 500; }
+    .pub-card__meta { display: flex; flex-wrap: wrap; gap: 0.35rem; align-items: center; }
+    .pub-card__tag { padding: 0.15rem 0.55rem; border-radius: 999px; font-size: 0.72rem; font-weight: 600; background: rgba(var(--accent-rgb), 0.08); color: var(--accent); }
+    .pub-card__tag--gold { background: rgba(var(--accent-gold-rgb), 0.12); color: var(--accent-gold); }
+    .pub-card__tag--citations { background: rgba(var(--primary-rgb), 0.06); color: var(--text-secondary); }
+
+    /* Memberships & Review */
+    .two-col-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+    .info-card { padding: 1.5rem; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg); box-shadow: var(--shadow); }
+    .info-card__title { font-family: var(--font-heading); font-size: 1.1rem; font-weight: 700; color: var(--primary); margin-bottom: 1rem; padding-bottom: 0.75rem; border-bottom: 1.5px solid var(--border-light); }
+
+    /* Tags (for memberships, collaborators, exams) */
+    .tag-list { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+    .tag {
+      padding: 0.25rem 0.7rem; border-radius: 999px; font-size: 0.8rem;
+      font-weight: 500; background: rgba(var(--accent-rgb), 0.06);
+      border: 1px solid rgba(var(--accent-rgb), 0.1); color: var(--text-secondary);
+      transition: all var(--transition);
+    }
+    .tag:hover { border-color: var(--accent); color: var(--accent); }
+
+    /* Awards */
+    .awards-grid { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .award-tag { padding: 0.3rem 0.8rem; border-radius: 999px; font-size: 0.8rem; font-weight: 600; background: rgba(var(--accent-gold-rgb), 0.1); color: var(--accent-gold); border: 1px solid rgba(var(--accent-gold-rgb), 0.15); }
+
+    /* Vision Box */
+    .vision-box {
+      padding: 2rem; background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--radius-lg); box-shadow: var(--shadow);
+      border-left: 4px solid var(--accent); margin-top: 1rem;
+    }
+    .vision-box p { font-size: 1.05rem; color: var(--text-secondary); line-height: 1.7; font-style: italic; }
+    .vision-box strong { color: var(--primary); font-style: normal; display: block; margin-bottom: 0.5rem; font-family: var(--font-heading); font-size: 1.15rem; }
+
+    /* Contact */
+    .contact-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
+    .contact__links { display: grid; gap: 0.85rem; }
+    .contact__link {
+      display: flex; justify-content: space-between; align-items: center; gap: 0.75rem;
+      padding: 1rem 1.25rem; border-radius: var(--radius-md);
+      background: var(--bg-card); border: 1px solid var(--border);
+      box-shadow: var(--shadow); transition: all var(--transition); position: relative; overflow: hidden;
+    }
+    .contact__link::after { content: ''; position: absolute; left: 0; bottom: 0; width: 0; height: 2px; background: linear-gradient(90deg, var(--accent), var(--primary-light)); transition: width var(--transition-slow); }
+    .contact__link:hover { border-color: rgba(var(--accent-rgb), 0.2); box-shadow: var(--shadow-hover); transform: translateY(-2px); }
+    .contact__link:hover::after { width: 100%; }
+    .contact__link-label { font-size: 0.78rem; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: 0.06em; }
+    .contact__link-value { font-size: 0.9rem; color: var(--text); font-weight: 500; }
+
+    .profile-links { margin-top: 1rem; }
+    .profile-links a { color: var(--accent); font-weight: 500; font-size: 0.85rem; transition: color var(--transition); }
+    .profile-links a:hover { color: var(--primary); }
+
+    /* Footer */
+    .footer { border-top: 1px solid var(--border); background: var(--bg-alt); position: relative; overflow: hidden; }
+    .footer::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, transparent, var(--accent), var(--primary-light), var(--accent), transparent); opacity: 0.15; }
+    .footer__inner { display: flex; justify-content: space-between; align-items: center; padding: 2rem 0; font-size: 0.82rem; color: var(--text-muted); }
+    .footer__tagline { font-size: 0.75rem; color: var(--text-muted); opacity: 0.7; }
+    .footer__top { color: var(--accent); font-weight: 600; font-size: 0.85rem; transition: all var(--transition); }
+    .footer__top:hover { color: var(--primary); transform: translateY(-2px); }
+
+    /* Show More */
+    .show-more-btn {
+      margin-top: 1rem; padding: 0.5rem 1.2rem; border-radius: var(--radius-sm);
+      border: 1px solid var(--border); font-size: 0.85rem; font-weight: 600;
+      color: var(--text-secondary); transition: all var(--transition);
+    }
+    .show-more-btn:hover { border-color: var(--accent); color: var(--accent); }
+    .hidden-pubs { display: none; }
+    .hidden-pubs.show { display: block; }
+
+    /* Reveal animations */
+    .reveal { transition: opacity 700ms ease, transform 700ms ease; }
+    .reveal--visible { }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .hero__grid { grid-template-columns: 280px 1fr; gap: 2.5rem; }
+      .hero__image-frame { width: 260px; height: 330px; }
+    }
+    @media (max-width: 768px) {
+      .container { width: min(100% - 32px, var(--max-width)); }
+      .header__nav { position: fixed; top: 68px; left: 16px; right: 16px; flex-direction: column; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 0.5rem; box-shadow: var(--shadow-hover); display: none; }
+      [data-theme="dark"] .header__nav { background: var(--bg-card); }
+      .header__nav--open { display: flex; }
+      .header__toggle { display: flex; }
+      .header__link { padding: 0.75rem 1rem; width: 100%; border-radius: var(--radius-sm); }
+      .hero { min-height: auto; padding: 6rem 0 3rem; }
+      .hero__grid { grid-template-columns: 1fr; gap: 2rem; text-align: center; }
+      .hero__image-wrap { align-items: center; }
+      .hero__image-frame { width: 220px; height: 280px; }
+      .hero__stats { justify-content: center; gap: 1.5rem; }
+      .hero__actions { justify-content: center; }
+      .hero__desc { max-width: 100%; }
+      .hero__label { text-align: center; }
+      .hero__name { text-align: center; }
+      .section { padding: 4rem 0; }
+      .section__header { max-width: 100%; }
+      .research-grid { grid-template-columns: 1fr; }
+      .skills-grid { grid-template-columns: 1fr; }
+      .two-col-grid { grid-template-columns: 1fr; }
+      .detail-grid { grid-template-columns: 1fr; }
+      .timeline { padding-left: 30px; }
+      .timeline::before { left: 15px; }
+      .timeline-item::before { left: -30px; width: 12px; height: 12px; top: 4px; }
+      .timeline-item__date { position: relative; left: auto; top: auto; width: auto; text-align: left; padding: 0 0 0.25rem 0; font-size: 0.8rem; }
+      .timeline-item__date-sub { display: inline; font-size: 0.75rem; }
+      .timeline-item__card { border-left-color: var(--accent); }
+      .contact-layout { grid-template-columns: 1fr; gap: 2rem; }
+      .contact__link { flex-direction: column; align-items: flex-start; gap: 0.25rem; }
+      .footer__inner { flex-direction: column; gap: 0.5rem; text-align: center; }
+    }
+    @media (max-width: 480px) {
+      .section { padding: 3rem 0; }
+      .hero__stats { gap: 1rem; }
+      .hero__stat-value { font-size: 1.4rem; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; scroll-behavior: auto !important; }
+      .reveal { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="progress-bar" id="progress-bar"></div>
+
+  <header class="header" id="header">
+    <div class="container header__inner">
+      <a href="#hero" class="header__logo">
+        <span class="header__logo-mark">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4c6 4 10 10 10 16"/><path d="M20 4c-6 4-10 10-10 16"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="8" y1="8" x2="16" y2="8"/><line x1="8" y1="16" x2="16" y2="16"/></svg>
+        </span>
+        <span class="header__logo-text">
+          <span class="header__logo-name">Dr. Umesh Kumar</span>
+          <span class="header__logo-role">Assistant Professor | SR University</span>
+        </span>
+      </a>
+      <nav class="header__nav" id="header-nav" aria-label="Main navigation">
+        <a href="#about" class="header__link">About</a>
+        <a href="#education" class="header__link">Education</a>
+        <a href="#experience" class="header__link">Experience</a>
+        <a href="#skills" class="header__link">Skills</a>
+        <a href="#publications" class="header__link">Publications</a>
+        <a href="#contact" class="header__link">Contact</a>
+      </nav>
+      <button class="header__toggle" id="header-toggle" type="button" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <!-- ==================== HERO ==================== -->
+    <section class="hero" id="hero">
+      <div class="container hero__grid">
+        <div class="hero__image-wrap">
+          <div class="hero__image-frame">
+            <img src="Umesh.png" alt="Dr. Umesh Kumar" width="420" height="520" class="hero__image" loading="eager">
+          </div>
+          <div class="hero__badge-row">
+            <span class="hero__badge">Ph.D. Clinical Metabolomics</span>
+            <span class="hero__badge">BBAU / CBMR, Lucknow</span>
+          </div>
+        </div>
+        <div class="hero__content">
+          <p class="hero__label">Multi-Omics &bull; Biomarker Discovery &bull; Metabolomics</p>
+          <h1 class="hero__name">
+            Dr. Umesh Kumar
+            <span class="subtitle">Assistant Professor &mdash; SR University, Warangal</span>
+          </h1>
+          <p class="hero__desc">
+            Multi-Omics and Biomarker Researcher with 12+ years of expertise in metabolomics, lipidomics, multi-omics integration, NMR spectroscopy, LC-MS/MS, and machine learning for clinical biomarker discovery and precision medicine.
+          </p>
+          <div class="hero__meta-line">
+            kumarumesh022@gmail.com &bull; +91 9517396699 &bull; Guest Researcher (SGPGIMS, Lucknow)
+          </div>
+          <div class="hero__stats">
+            <div><span class="hero__stat-value">50+</span><span class="hero__stat-label">Publications</span></div>
+            <div><span class="hero__stat-value">1,230</span><span class="hero__stat-label">Citations</span></div>
+            <div><span class="hero__stat-value">21</span><span class="hero__stat-label">h-index</span></div>
+            <div><span class="hero__stat-value">41</span><span class="hero__stat-label">i10-index</span></div>
+          </div>
+          <div class="hero__actions">
+            <a href="mailto:kumarumesh022@gmail.com" class="btn btn--outline">Email</a>
+            <a href="https://scholar.google.com/citations?user=19qDl5gAAAAJ" target="_blank" class="btn btn--outline">Google Scholar</a>
+            <a href="https://orcid.org/0000-0002-0961-8048" target="_blank" class="btn btn--outline">ORCID</a>
+            <a href="https://www.researchgate.net/profile/Umesh-Kumar-20" target="_blank" class="btn btn--outline">ResearchGate</a>
+          </div>
+          <div class="hero__badge-row" style="justify-content:flex-start;margin-top:0.5rem;">
+            <a href="https://www.scopus.com/authid/detail.uri?authorId=57208040930" target="_blank" class="btn btn--accent">Scopus</a>
+            <a href="https://www.webofscience.com/wos/author/record/ABD-9355-2020" target="_blank" class="btn btn--accent">Web of Science</a>
+            <a href="https://loop.frontiersin.org/people/1835415" target="_blank" class="btn btn--accent">Frontiers Loop</a>
+            <a href="https://sciprofiles.com/publications" target="_blank" class="btn btn--accent">SciProfiles</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== ABOUT ==================== -->
+    <section class="section section--alt" id="about">
+      <div class="container">
+        <div class="section__header">
+          <span class="section__number">01</span>
+          <h2 class="section__title">About Me</h2>
+          <p class="section__subtitle">Multi-Omics and Biomarker Researcher translating complex biological data into clinical insights.</p>
+        </div>
+        <p class="section__text">
+          I am a <strong>Multi-Omics and Biomarker Researcher</strong> with over 12 years of expertise in <strong>Metabolomics</strong>, <strong>Lipidomics</strong>, <strong>Multi-Omics Integration</strong>, <strong>Spatial Omics</strong>, and <strong>Bioinformatics</strong> for multivariate statistical analysis and <strong>Machine Learning</strong> using Python and R. I am an experienced practitioner of <strong>NMR spectroscopy (400&ndash;800 MHz)</strong>, <strong>LC-MS/MS</strong>, and <strong>GC-MS/MS</strong> for clinical and pre-clinical biomarker discovery, method development, and large-scale population-based metabolomics.
+        </p>
+        <p class="section__text">
+          I hold a <strong>PhD in Clinical Metabolomics</strong> from Babasaheb Bhimrao Ambedkar University (awarded 2022) through the Centre of BioMedical Research (CBMR), Lucknow, funded by the <strong>ICMR-Senior Research Fellowship</strong>. My doctoral thesis identified NMR-based metabolic signatures of autoimmune inflammatory diseases including Takayasu arteritis and Lupus Nephritis. I have <strong>50+ peer-reviewed publications</strong> (1,230+ citations, h-index 21, i10-index 41), comprising 21 Q1 and 20 Q2 papers, with 9 as first author, 14 as second author, and 12 papers ranked in the top 10 percentile globally.
+        </p>
+        <p class="section__text">
+          I qualified four national-level competitive examinations: <strong>GATE (2014)</strong>, <strong>ICMR-JRF (2014)</strong>, <strong>CSIR-NET Lectureship (2015)</strong>, and the <strong>UPHESC Assistant Professorship (2022)</strong>. My international postdoctoral experience at the <strong>University of Innsbruck, Austria</strong> involved developing SOPs for multi-biofluid metabolomics and processing &gt;1,200 clinical samples under the VASCage programme on vascular health. I am presently <strong>Assistant Professor</strong> at <strong>SR University, Warangal</strong> (since July 2026) and continue as <strong>Guest Researcher</strong> at SGPGIMS, Lucknow.
+        </p>
+      </div>
+    </section>
+
+    <!-- ==================== EDUCATION ==================== -->
+    <section class="section section--alt" id="education">
+      <div class="container">
+        <div class="section__header">
+          <span class="section__number">02</span>
+          <h2 class="section__title">Education</h2>
+        </div>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-item__date">2015 &ndash; 2020<span class="timeline-item__date-sub">ICMR-SRF</span></div>
+            <div class="timeline-item__card">
+              <div class="timeline-item__title">PhD in Clinical Metabolomics</div>
+              <div class="timeline-item__org">Babasaheb Bhimrao Ambedkar University (at CBMR), Lucknow</div>
+              <div class="timeline-item__desc">Thesis: Identification of distinctive metabolic signatures of autoimmune inflammatory diseases using NMR based metabolomics approach. Funded by ICMR-Senior Research Fellowship (2018&ndash;2020) and ICMR-Junior Research Fellowship (2015&ndash;2018).</div>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-item__date">2010 &ndash; 2012</div>
+            <div class="timeline-item__card">
+              <div class="timeline-item__title">M.Sc. in Biological Sciences</div>
+              <div class="timeline-item__org">Babasaheb Bhimrao Ambedkar University (BBAU, Central University), Lucknow</div>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-item__date">2007 &ndash; 2010</div>
+            <div class="timeline-item__card">
+              <div class="timeline-item__title">B.Sc. in Chemistry / Biology</div>
+              <div class="timeline-item__org">MJP Rohilkhand University, Bareilly</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== EXPERIENCE ==================== -->
+    <section class="section" id="experience">
+      <div class="container">
+        <div class="section__header">
+          <span class="section__number">03</span>
+          <h2 class="section__title">Experience</h2>
+          <p class="section__subtitle">Research and teaching career spanning India, Austria, and multiple premier institutes.</p>
+        </div>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-item__date">Jul 2026 &ndash; Present</div>
+            <div class="timeline-item__card">
+              <div class="timeline-item__title">Assistant Professor</div>
+              <div class="timeline-item__org">SR University, Warangal, Telangana — 506371</div>
+              <div class="timeline-item__desc">
+                <p style="margin-bottom:0.5rem;">Teaching <strong>Computational Chemistry</strong>, <strong>Omics Data Analysis</strong>, and <strong>Machine Learning in Biology</strong> at the undergraduate and postgraduate levels. Establishing a state-of-the-art <strong>Metabolomics &amp; Multi-Omics Research Facility</strong> for biomarker discovery and precision medicine. Mentoring student research projects, guiding interdisciplinary collaborative studies, and developing course curricula for modern bioinformatics and systems biology programmes.</p>
+                <p>Actively pursuing extramural funding from DST-SERB, ICMR, and UGC for establishing NMR and LC-MS/MS based translational metabolomics platforms. Supervising PhD scholars in multi-omics integration, metabolic pathway analysis, and ML-driven biomarker panel design.</p>
+              </div>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-item__date">Sep 2024 &ndash; Jul 2026</div>
+            <div class="timeline-item__card">
+              <div class="timeline-item__title">Guest Researcher</div>
+              <div class="timeline-item__org">Sanjay Gandhi Postgraduate Institute of Medical Sciences (SGPGIMS), Lucknow</div>
+              <div class="timeline-item__desc">Teaching and practical training in Analytical Research Methods: LC-MS, GC-MS, NMR, Biochemistry, Metabolism, and Multivariate Statistics using Python/R. Conducted metabolomics and lipidomics research on pancreatic cancer and AKI/CKD. Developed LC-MS based SOPs for biofluid metabolomics and lipidomics.</div>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-item__date">Aug 2024 &ndash; Apr 2025</div>
+            <div class="timeline-item__card">
+              <div class="timeline-item__title">Guest Faculty</div>
+              <div class="timeline-item__org">NS Postgraduate College, Kanpur University</div>
+              <div class="timeline-item__desc">Taught Human Physiology, Developmental Biology, and Biochemistry to B.Sc. and M.Sc. students. Mentored laboratory practicals and dissertation projects.</div>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-item__date">Apr 2025 &ndash; Jul 2025</div>
+            <div class="timeline-item__card">
+              <div class="timeline-item__title">Analytical Trainee</div>
+              <div class="timeline-item__org">Fare Labs Pvt Ltd, India</div>
+              <div class="timeline-item__desc">CRM and stock management; QA/QC support; pesticide/antibiotic residue detection in cereals, milk, and vegetables using LC-MS/MS and GC-MS/MS; method development and instrument troubleshooting.</div>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-item__date">May 2023 &ndash; Jun 2024</div>
+            <div class="timeline-item__card">
+              <div class="timeline-item__title">Postdoctoral Researcher</div>
+              <div class="timeline-item__org">University of Innsbruck, Austria</div>
+              <div class="timeline-item__desc">Developed SOPs for stool, saliva, and urine metabolomics (NMR-based). Processed &gt;1,200 clinical samples under VASCage programme. Established collaborations with EUTOPS (TIROLGESUND ATLAS) and Medical University of Innsbruck (NEOVASCage).</div>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-item__date">Dec 2021 &ndash; Mar 2023</div>
+            <div class="timeline-item__card">
+              <div class="timeline-item__title">Research Associate &ndash; III</div>
+              <div class="timeline-item__org">National Bureau of Animal Genetic Resources (NBAGR), Karnal</div>
+              <div class="timeline-item__desc">Characterized Ladakhi cow and yak colostrum using NMR and LC/GC-MS-based metabolomics. Conducted RNA isolation, antioxidant assays, ELISA, flow cytometry, microscopy, and animal handling. Supervised 1 SRF, 3 PhD scholars, and 1 Master's student.</div>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-item__date">Sep 2015 &ndash; Oct 2021</div>
+            <div class="timeline-item__card">
+              <div class="timeline-item__title">Senior/Junior Research Fellow (PhD Researcher)</div>
+              <div class="timeline-item__org">Centre of BioMedical Research (CBMR), Lucknow</div>
+              <div class="timeline-item__desc">Identified metabolic signatures of autoimmune inflammatory diseases (Takayasu arteritis, Lupus Nephritis, MCI). Carried out NMR spectroscopy (400&ndash;800 MHz) and multivariate statistical analyses. Mentored 2 PhD scholars and 5 MSc students.</div>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-item__date">May 2014 &ndash; Aug 2015</div>
+            <div class="timeline-item__card">
+              <div class="timeline-item__title">Project Assistant</div>
+              <div class="timeline-item__org">Bareilly College (MJPR University) &mdash; UGC Project</div>
+              <div class="timeline-item__desc">Specialised in collection and isolation of root-knot nematode. Prepared samples for electron microscopy and SEM analysis. Investigated nematicidal effects of herbal extracts.</div>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-item__date">2012 &ndash; 2013</div>
+            <div class="timeline-item__card">
+              <div class="timeline-item__title">Business Development Executive</div>
+              <div class="timeline-item__org">GenxBio Health Sciences Pvt. Ltd.</div>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-item__date">May &ndash; Jul 2011</div>
+            <div class="timeline-item__card">
+              <div class="timeline-item__title">Summer Intern</div>
+              <div class="timeline-item__org">Indian Institute of Science (IISc), Bengaluru</div>
+              <div class="timeline-item__desc">Project: Molecular Phylogeny of Hemidactylus brookii species complex in the Himalayas. Performed DNA isolation, electrophoresis, and genetic data analysis.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== NATIONAL EXAMS ==================== -->
+    <section class="section section--alt" id="exams">
+      <div class="container">
+        <div class="section__header">
+          <span class="section__number">04</span>
+          <h2 class="section__title">National Examinations</h2>
+        </div>
+        <div class="awards-grid">
+          <span class="award-tag">GATE 2014</span>
+          <span class="award-tag">ICMR-Junior Research Fellowship 2014</span>
+          <span class="award-tag">CSIR-NET Lectureship 2015</span>
+          <span class="award-tag">UPHESC Assistant Professorship 2022</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== SKILLS ==================== -->
+    <section class="section" id="skills">
+      <div class="container">
+        <div class="section__header">
+          <span class="section__number">05</span>
+          <h2 class="section__title">Technical Skills</h2>
+          <p class="section__subtitle">Bench, analytical, and computational capabilities for translational metabolomics research.</p>
+        </div>
+        <div class="skills-grid">
+          <div class="skill-card">
+            <div class="skill-card__icon">&#x1F9EA;</div>
+            <div class="skill-card__title">NMR-based Metabolomics</div>
+            <ul class="skill-card__list">
+              <li>1D-NMR (CPMG, ZGPR, NOESY)</li>
+              <li>2D-NMR (JRES, COSY)</li>
+              <li>1H-13C NMR (HSQC, HMBC)</li>
+              <li>Topspin</li>
+              <li>Amix Aurelia</li>
+              <li>Chenomx</li>
+            </ul>
+          </div>
+          <div class="skill-card">
+            <div class="skill-card__icon">&#x2697;&#xFE0F;</div>
+            <div class="skill-card__title">LC-MS/MS &amp; GC-MS/MS</div>
+            <ul class="skill-card__list">
+              <li>HPLC (Agilent, Waters)</li>
+              <li>LC-MS/MS (Agilent, Waters)</li>
+              <li>GC-MS/MS (Shimadzu)</li>
+              <li>Compound Discoverer</li>
+              <li>MassLynx / MassHunter</li>
+              <li>XCMS / Lipid Maps</li>
+            </ul>
+          </div>
+          <div class="skill-card">
+            <div class="skill-card__icon">&#x1F4CA;</div>
+            <div class="skill-card__title">Bioinformatics &amp; ML</div>
+            <ul class="skill-card__list">
+              <li>Python</li>
+              <li>R</li>
+              <li>MetaboAnalyst</li>
+              <li>SIMCA</li>
+              <li>GraphPad Prism</li>
+              <li>PCA / PLS-DA / OPLS-DA</li>
+            </ul>
+          </div>
+          <div class="skill-card">
+            <div class="skill-card__icon">&#x1F4E6;</div>
+            <div class="skill-card__title">Databases &amp; Tools</div>
+            <ul class="skill-card__list">
+              <li>HMDB</li>
+              <li>Reactome</li>
+              <li>KEGG</li>
+              <li>Biorender</li>
+              <li>Chem Biodraw</li>
+              <li>Adobe Illustrator</li>
+            </ul>
+          </div>
+          <div class="skill-card">
+            <div class="skill-card__icon">&#x1F52C;</div>
+            <div class="skill-card__title">Analytical Techniques</div>
+            <ul class="skill-card__list">
+              <li>FTIR / UV Spectroscopy</li>
+              <li>ELISA / Antioxidant Assay</li>
+              <li>DNA/RNA Isolation</li>
+              <li>Cell Culture</li>
+              <li>Flow Cytometry</li>
+              <li>Microscopy / SEM</li>
+            </ul>
+          </div>
+          <div class="skill-card">
+            <div class="skill-card__icon">&#x1F9EC;</div>
+            <div class="skill-card__title">Biofluid Preparation</div>
+            <ul class="skill-card__list">
+              <li>Serum / Plasma</li>
+              <li>Urine</li>
+              <li>Stool / Saliva</li>
+              <li>Milk / Tissue</li>
+              <li>Colostrum</li>
+              <li>Biofluid Extraction</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== RESEARCH INTERESTS ==================== -->
+    <section class="section section--alt" id="interests">
+      <div class="container">
+        <div class="section__header">
+          <span class="section__number">06</span>
+          <h2 class="section__title">Research Interests</h2>
+        </div>
+        <div class="tag-list">
+          <span class="tag">Metabolomics</span>
+          <span class="tag">Lipidomics</span>
+          <span class="tag">Multi-Omics Integration</span>
+          <span class="tag">Spatial Omics</span>
+          <span class="tag">Biomarker Discovery</span>
+          <span class="tag">NMR Spectroscopy</span>
+          <span class="tag">LC-MS/MS</span>
+          <span class="tag">GC-MS/MS</span>
+          <span class="tag">Machine Learning in Omics</span>
+          <span class="tag">Precision Medicine</span>
+          <span class="tag">Autoimmune Diseases</span>
+          <span class="tag">Cancer Metabolomics</span>
+          <span class="tag">Pancreatic Cancer</span>
+          <span class="tag">AKI/CKD</span>
+          <span class="tag">Gut Microbiota</span>
+          <span class="tag">Nutritional Metabolomics</span>
+          <span class="tag">Milk Metabolomics</span>
+          <span class="tag">Systems Biology</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== RESEARCH PROJECTS ==================== -->
+    <section class="section" id="projects">
+      <div class="container">
+        <div class="section__header">
+          <span class="section__number">07</span>
+          <h2 class="section__title">Research Projects</h2>
+        </div>
+        <div class="research-grid">
+          <div class="research-card">
+            <div class="research-card__icon">&#x1F9EA;</div>
+            <div class="research-card__title">Characterizing Milk Colostrum of Ladakhi Cows and Yak</div>
+            <div class="research-card__desc">Identification of biomolecules with therapeutic potential using NMR, LC-MS, and GC-MS analysis. DST-SEED funded project with Dr. Manishi Mukesh (NBAGR).</div>
+            <div class="research-card__tags">
+              <span class="research-card__tag">DST-SEED</span>
+              <span class="research-card__tag">NBAGR</span>
+              <span class="research-card__tag">&euro;230K</span>
+            </div>
+          </div>
+          <div class="research-card">
+            <div class="research-card__icon">&#x1F52C;</div>
+            <div class="research-card__title">Metabolic Signatures of Autoimmune Inflammatory Diseases</div>
+            <div class="research-card__desc">NMR-based metabolomics study identifying distinctive metabolic signatures of Takayasu arteritis and Lupus Nephritis. ICMR-funded PhD research at CBMR, Lucknow.</div>
+            <div class="research-card__tags">
+              <span class="research-card__tag">ICMR</span>
+              <span class="research-card__tag">CBMR</span>
+              <span class="research-card__tag">&euro;9.7K</span>
+            </div>
+          </div>
+          <div class="research-card">
+            <div class="research-card__icon">&#x1F9EC;</div>
+            <div class="research-card__title">Metabolic Disturbances in Autoimmune Diseases</div>
+            <div class="research-card__desc">Disease fingerprinting using NMR-based metabolomics approach for early diagnosis and activity assessment of autoimmune conditions.</div>
+            <div class="research-card__tags">
+              <span class="research-card__tag">ICMR</span>
+              <span class="research-card__tag">CBMR</span>
+              <span class="research-card__tag">&euro;10K</span>
+            </div>
+          </div>
+          <div class="research-card">
+            <div class="research-card__icon">&#x1F331;</div>
+            <div class="research-card__title">Nematode Management in Vegetable Crops</div>
+            <div class="research-card__desc">UGC-funded project studying nematode constraints and their management in Western Uttar Pradesh. Involved field work, electron microscopy, and SEM analysis.</div>
+            <div class="research-card__tags">
+              <span class="research-card__tag">UGC</span>
+              <span class="research-card__tag">Bareilly College</span>
+              <span class="research-card__tag">&euro;10.9K</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== PUBLICATIONS ==================== -->
+    <section class="section section--alt" id="publications">
+      <div class="container">
+        <div class="section__header">
+          <span class="section__number">08</span>
+          <h2 class="section__title">Publications</h2>
+          <p class="section__subtitle">50+ peer-reviewed articles in high-impact journals spanning metabolomics, biomarker discovery, and translational research.</p>
+        </div>
+        <p style="font-size:0.82rem;color:var(--text-muted);margin-bottom:1rem;">
+          <span class="pub-card__tag" style="margin-right:3px;">Q1</span> = Q1 journal &bull;
+          <span class="pub-card__tag--gold" style="padding:0.15rem 0.55rem;border-radius:999px;font-size:0.72rem;margin-right:3px;">Top 10%</span> = top 10 percentile &bull;
+          <span class="pub-card__tag--citations" style="padding:0.15rem 0.55rem;border-radius:999px;font-size:0.72rem;margin-right:3px;">IF X.X</span> = Impact Factor &bull;
+          <span class="pub-card__tag--citations" style="padding:0.15rem 0.55rem;border-radius:999px;font-size:0.72rem;">Citations: XX</span>
+        </p>
+        <div class="pub-list">
+          <div class="pub-card">
+            <div class="pub-card__title">1H NMR-based serum metabolomics identifies discriminatory metabolic signatures associated with pancreatic cancer</div>
+            <div class="pub-card__journal">Scientific Reports, 16, 17919 (2026)</div>
+            <div class="pub-card__meta">
+              <span class="pub-card__tag">Co-author</span>
+              <span class="pub-card__tag">Q1</span>
+              <span class="pub-card__tag--citations">IF 4.9</span>
+              <a href="https://doi.org/10.1038/s41598-026-17919-0" target="_blank" style="color:var(--accent);font-size:0.78rem;font-weight:600;">[DOI]</a>
+            </div>
+          </div>
+          <div class="pub-card">
+            <div class="pub-card__title">Characterization of metabolite profiles in milk derived exosomes from indicus, crossbred and taurine cows by 1H NMR analysis</div>
+            <div class="pub-card__journal">Food Chemistry, 473, 143015 (2025)</div>
+            <div class="pub-card__meta">
+              <span class="pub-card__tag">Q1</span>
+              <span class="pub-card__tag--gold">Top 10%</span>
+              <span class="pub-card__tag--citations">IF 10.4</span>
+              <a href="https://doi.org/10.1016/j.foodchem.2025.143015" target="_blank" style="color:var(--accent);font-size:0.78rem;font-weight:600;">[DOI]</a>
+            </div>
+          </div>
+          <div class="pub-card">
+            <div class="pub-card__title">Characterizing metabolome signature of colostrum, transition and mature milk of indigenous cows adapted to high altitude</div>
+            <div class="pub-card__journal">Food Chemistry, 464, 141767 (2025)</div>
+            <div class="pub-card__meta">
+              <span class="pub-card__tag">Q1</span>
+              <span class="pub-card__tag--gold">Top 10%</span>
+              <span class="pub-card__tag--citations">IF 10.4</span>
+              <a href="https://doi.org/10.1016/j.foodchem.2024.141767" target="_blank" style="color:var(--accent);font-size:0.78rem;font-weight:600;">[DOI]</a>
+            </div>
+          </div>
+          <div class="pub-card">
+            <div class="pub-card__title">Multi-modal atlas of lifestyle interventions reveals malleability of ageing-linked molecular features</div>
+            <div class="pub-card__journal">Cell (under review) &bull; bioRxiv (2025)</div>
+            <div class="pub-card__meta">
+              <span class="pub-card__tag--citations">IF 64.5</span>
+              <a href="https://doi.org/10.1101/2025.08.30.673115" target="_blank" style="color:var(--accent);font-size:0.78rem;font-weight:600;">[DOI]</a>
+            </div>
+          </div>
+          <div class="pub-card">
+            <div class="pub-card__title">Systemic multi-omic remodelling underlies health benefits of intermittent fasting</div>
+            <div class="pub-card__journal">bioRxiv (2025)</div>
+            <div class="pub-card__meta">
+              <span class="pub-card__tag--citations">IF 64.5</span>
+              <a href="https://doi.org/10.1101/2025.08.30.673138" target="_blank" style="color:var(--accent);font-size:0.78rem;font-weight:600;">[DOI]</a>
+            </div>
+          </div>
+          <div class="pub-card">
+            <div class="pub-card__title">Longitudinal multi-omic evaluation of biomarkers of health and ageing over smoking cessation intervention</div>
+            <div class="pub-card__journal">bioRxiv (2025)</div>
+            <div class="pub-card__meta">
+              <span class="pub-card__tag--citations">IF 64.5</span>
+              <a href="https://doi.org/10.1101/2025.08.29.673135" target="_blank" style="color:var(--accent);font-size:0.78rem;font-weight:600;">[DOI]</a>
+            </div>
+          </div>
+        </div>
+        <div id="morePubs" class="hidden-pubs">
+          <div class="pub-list">
+            <div class="pub-card"><div class="pub-card__title">Kuwanons from Mulberry (Morus spp.): Exploring structural activity relationship, biosynthesis, and biological properties</div><div class="pub-card__journal">Fitoterapia, 190, 107138 (2026)</div><div class="pub-card__meta"><span class="pub-card__tag--citations">IF 2.5</span><a href="https://doi.org/10.1016/j.fitote.2026.107138" target="_blank" style="color:var(--accent);font-size:0.78rem;font-weight:600;">[DOI]</a></div></div>
+            <div class="pub-card"><div class="pub-card__title">Mulberry: From nutraceuticals to bioactive phytochemicals</div><div class="pub-card__journal">Food and Humanity, 2, 100272 (2024)</div><div class="pub-card__meta"><span class="pub-card__tag--citations">IF 2.1</span><a href="https://doi.org/10.1016/j.foohum.2024.100272" target="_blank" style="color:var(--accent);font-size:0.78rem;font-weight:600;">[DOI]</a></div></div>
+            <div class="pub-card"><div class="pub-card__title">Acute pancreatitis is characterized by generalized intestinal barrier dysfunction in early stage</div><div class="pub-card__journal">Pancreatology, 23(1), 9-17 (2023)</div><div class="pub-card__meta"><span class="pub-card__tag--citations">Citations: 37</span><span class="pub-card__tag--citations">IF 3.6</span><a href="https://doi.org/10.1016/j.pan.2022.11.011" target="_blank" style="color:var(--accent);font-size:0.78rem;font-weight:600;">[DOI]</a></div></div>
+            <div class="pub-card"><div class="pub-card__title">Silk fibroin hydrogel: A novel biopolymer for sustained release of vancomycin drug for diabetic wound healing</div><div class="pub-card__journal">Journal of Molecular Structure, 1286, 135548 (2023)</div><div class="pub-card__meta"><span class="pub-card__tag--citations">Citations: 30</span><span class="pub-card__tag--citations">IF 3.8</span><a href="https://doi.org/10.1016/j.molstruc.2023.135548" target="_blank" style="color:var(--accent);font-size:0.78rem;font-weight:600;">[DOI]</a></div></div>
+            <div class="pub-card"><div class="pub-card__title">Fabrication of mulberry leaf extract (MLE)- and tasar pupal oil (TPO)-loaded silk fibroin hydrogels and their antimicrobial properties</div><div class="pub-card__journal">3 Biotech, 13, 37 (2023)</div><div class="pub-card__meta"><span class="pub-card__tag--citations">IF 2.6</span><a href="https://doi.org/10.1007/s13205-022-03443-5" target="_blank" style="color:var(--accent);font-size:0.78rem;font-weight:600;">[DOI]</a></div></div>
+            <div class="pub-card"><div class="pub-card__title">Vinpocetine mitigates DMH-induced pre-neoplastic colon damage in rats through inhibition of pro-inflammatory cytokines</div><div class="pub-card__journal">International Immunopharmacology, 119, 110236 (2023)</div><div class="pub-card__meta"><span class="pub-card__tag--citations">IF 4.8</span><a href="https://doi.org/10.1016/j.intimp.2023.110236" target="_blank" style="color:var(--accent);font-size:0.78rem;font-weight:600;">[DOI]</a></div></div>
+            <div class="pub-card"><div class="pub-card__title">Association of altered metabolic profiles and long non-coding RNAs expression with disease severity in breast cancer patients</div><div class="pub-card__journal">Metabolomics, 19, 8 (2023)</div><div class="pub-card__meta"><span class="pub-card__tag--citations">IF 3.6</span><a href="https://doi.org/10.1007/s11306-023-01972-5" target="_blank" style="color:var(--accent);font-size:0.78rem;font-weight:600;">[DOI]</a></div></div>
+            <div class="pub-card"><div class="pub-card__title">Ameliorative effect of fluvoxamine against colon carcinogenesis via COX-2 blockade with oxidative and metabolic stress reduction</div><div class="pub-card__journal">BBA Advances, 2, 100046 (2022)</div><div class="pub-card__meta"><span class="pub-card__tag--citations">IF 2.8</span><a href="https://doi.org/10.1016/j.bbadva.2022.100046" target="_blank" style="color:var(--accent);font-size:0.78rem;font-weight:600;">[DOI]</a></div></div>
+            <div class="pub-card"><div class="pub-card__title">Assessment of hyaluronic acid-modified imatinib mesylate cubosomes through CD44 targeted drug delivery in NDEA-induced hepatic carcinoma</div><div class="pub-card__journal">International Journal of Pharmaceutics, 622, 121848 (2022)</div><div class="pub-card__meta"><span class="pub-card__tag--citations">Citations: 26</span><span class="pub-card__tag--citations">IF 5.8</span><a href="https://doi.org/10.1016/j.ijpharm.2022.121848" target="_blank" style="color:var(--accent);font-size:0.78rem;font-weight:600;">[DOI]</a></div></div>
+            <div class="pub-card"><div class="pub-card__title">Mechanistic exploration of poly(lactic-co-glycolic acid)-loaded nanoparticles of betulinic acid against hepatocellular carcinoma</div><div class="pub-card__journal">Archives of Physiology and Biochemistry, 128(3), 836-848 (2022)</div><div class="pub-card__meta"><span class="pub-card__tag--citations">IF 3.5</span><a href="https://doi.org/10.1080/13813455.2020.1733024" target="_blank" style="color:var(--accent);font-size:0.78rem;font-weight:600;">[DOI]</a></div></div>
+            <div class="pub-card"><div class="pub-card__title">Response Guided Slow Infusion of Albumin, Vasoconstrictors and Furosemide Improves Ascites Mobilization and Survival in Acute on Chronic Liver Failure</div><div class="pub-card__journal">Journal of Inflammation Research, 2022, 5027-5039 (2022)</div><div class="pub-card__meta"><span class="pub-card__tag--citations">IF 4.5</span><a href="https://doi.org/10.2147/JIR.S377494" target="_blank" style="color:var(--accent);font-size:0.78rem;font-weight:600;">[DOI]</a></div></div>
+            <div class="pub-card"><div class="pub-card__title">An elaborative NMR based plasma metabolomics study revealed metabolic derangements in patients with mild cognitive impairment</div><div class="pub-card__journal">Metabolic Brain Disease, 36, 957-968 (2021)</div><div class="pub-card__meta"><span class="pub-card__tag--citations">IF 3.6</span><a href="https://doi.org/10.1007/s11011-021-00700-z" target="_blank" style="color:var(--accent);font-size:0.78rem;font-weight:600;">[DOI]</a></div></div>
+            <div class="pub-card"><div class="pub-card__title">Circulatory histidine levels as predictive indicators of disease activity in Takayasu arteritis</div><div class="pub-card__journal">Analytical Science Advances, 2(11-12), 527-535 (2021)</div><div class="pub-card__meta"><span class="pub-card__tag--citations">IF 2.0</span><a href="https://doi.org/10.1002/ansa.202000181" target="_blank" style="color:var(--accent);font-size:0.78rem;font-weight:600;">[DOI]</a></div></div>
+            <div class="pub-card"><div class="pub-card__title">Fabrication of Imatinib Mesylate-Loaded Lactoferrin-Modified PEGylated Liquid Crystalline Nanoparticles for Mitochondrial-Dependent Apoptosis in HCC</div><div class="pub-card__journal">Molecular Pharmaceutics, 18(3), 1102-1120 (2021)</div><div class="pub-card__meta"><span class="pub-card__tag--citations">Citations: 27</span><span class="pub-card__tag--citations">IF 4.9</span><a href="https://doi.org/10.1021/acs.molpharmaceut.0c01024" target="_blank" style="color:var(--accent);font-size:0.78rem;font-weight:600;">[DOI]</a></div></div>
+            <div class="pub-card"><div class="pub-card__title">NMR-based serum and muscle metabolomics for diagnosis and activity assessment in idiopathic inflammatory myopathies</div><div class="pub-card__journal">Analytical Science Advances, 2(11-12), 515-526 (2021)</div><div class="pub-card__meta"><span class="pub-card__tag--citations">IF 2.0</span><a href="https://doi.org/10.1002/ansa.202000171" target="_blank" style="color:var(--accent);font-size:0.78rem;font-weight:600;">[DOI]</a></div></div>
+            <div class="pub-card"><div class="pub-card__title">Serum Metabolic Disturbances Associated with Acute-on-chronic Liver Failure in Patients with Alcoholic Liver Diseases</div><div class="pub-card__journal">Journal of Pharmacy and Bioallied Sciences, 13(2), 276-282 (2021)</div><div class="pub-card__meta"><span class="pub-card__tag--citations">IF 0.6</span><a href="https://doi.org/10.4103/JPBS.JPBS_333_20" target="_blank" style="color:var(--accent);font-size:0.78rem;font-weight:600;">[DOI]</a></div></div>
+            <div class="pub-card"><div class="pub-card__title">Targeted NMR-based serum metabolic profiling of serine, glycine and methionine in acute-on-chronic liver failure patients</div><div class="pub-card__journal">Analytical Science Advances, 2(11-12), 536-545 (2021)</div><div class="pub-card__meta"><span class="pub-card__tag--citations">IF 2.0</span><a href="https://doi.org/10.1002/ansa.202000167" target="_blank" style="color:var(--accent);font-size:0.78rem;font-weight:600;">[DOI]</a></div></div>
+            <div class="pub-card"><div class="pub-card__title">Characterization, biological evaluation and molecular docking of mulberry fruit pectin</div><div class="pub-card__journal">Scientific Reports, 10, 21789 (2020)</div><div class="pub-card__meta"><span class="pub-card__tag">Q1</span><span class="pub-card__tag--citations">Citations: 32</span><span class="pub-card__tag--citations">IF 4.9</span><a href="https://doi.org/10.1038/s41598-020-78086-8" target="_blank" style="color:var(--accent);font-size:0.78rem;font-weight:600;">[DOI]</a></div></div>
+            <div class="pub-card"><div class="pub-card__title">Circulatory Glutamine/Glucose ratio for evaluating disease activity in Takayasu arteritis: A NMR based serum metabolomics study</div><div class="pub-card__journal">Journal of Pharmaceutical and Biomedical Analysis, 180, 113080 (2020)</div><div class="pub-card__meta"><span class="pub-card__tag--citations">Citations: 40</span><span class="pub-card__tag--citations">IF 3.4</span><a href="https://doi.org/10.1016/j.jpba.2019.113080" target="_blank" style="color:var(--accent);font-size:0.78rem;font-weight:600;">[DOI]</a></div></div>
+            <div class="pub-card"><div class="pub-card__title">Nuclear magnetic resonance-based targeted profiling of urinary acetate and citrate following cyclophosphamide therapy in lupus nephritis</div><div class="pub-card__journal">Lupus, 29(7), 782-786 (2020)</div><div class="pub-card__meta"><span class="pub-card__tag">Q1</span><span class="pub-card__tag--gold">Top 10%</span><span class="pub-card__tag--citations">IF 2.6</span><a href="https://doi.org/10.1177/0961203320918011" target="_blank" style="color:var(--accent);font-size:0.78rem;font-weight:600;">[DOI]</a></div></div>
+            <div class="pub-card"><div class="pub-card__title">Novel 1,3,4-thiadiazoles inhibit colorectal cancer via blockade of IL-6/COX-2 mediated JAK2/STAT3 signals</div><div class="pub-card__journal">Cytokine, 118, 144-159 (2019)</div><div class="pub-card__meta"><span class="pub-card__tag--citations">Citations: 58</span><span class="pub-card__tag--citations">IF 3.8</span><a href="https://doi.org/10.1016/j.cyto.2018.03.026" target="_blank" style="color:var(--accent);font-size:0.78rem;font-weight:600;">[DOI]</a></div></div>
+            <div class="pub-card"><div class="pub-card__title">Metabolomics approach discriminates toxicity index of pyrazinamide and its metabolic products, pyrazinoic acid and 5-hydroxy pyrazinoic acid</div><div class="pub-card__journal">Human &amp; Experimental Toxicology, 37(4), 373-389 (2018)</div><div class="pub-card__meta"><span class="pub-card__tag--citations">Citations: 43</span><span class="pub-card__tag--citations">IF 2.9</span><a href="https://doi.org/10.1177/0960327117705426" target="_blank" style="color:var(--accent);font-size:0.78rem;font-weight:600;">[DOI]</a></div></div>
+            <div class="pub-card"><div class="pub-card__title">NMR-Based Serum Metabolomics Reveals Reprogramming of Lipid Dysregulation Following Cyclophosphamide-Based Induction Therapy in Lupus Nephritis</div><div class="pub-card__journal">Journal of Proteome Research, 17(7), 2440-2448 (2018)</div><div class="pub-card__meta"><span class="pub-card__tag">Q1</span><span class="pub-card__tag--citations">Citations: 35</span><span class="pub-card__tag--citations">IF 3.8</span><a href="https://doi.org/10.1021/acs.jproteome.8b00192" target="_blank" style="color:var(--accent);font-size:0.78rem;font-weight:600;">[DOI]</a></div></div>
+            <div class="pub-card"><div class="pub-card__title">NMR-Based Serum Metabolomics of Patients with Takayasu Arteritis: Relationship with Disease Activity</div><div class="pub-card__journal">Journal of Proteome Research, 17(9), 3317-3324 (2018)</div><div class="pub-card__meta"><span class="pub-card__tag">Q1</span><span class="pub-card__tag--citations">Citations: 25</span><span class="pub-card__tag--citations">IF 3.8</span><a href="https://doi.org/10.1021/acs.jproteome.8b00456" target="_blank" style="color:var(--accent);font-size:0.78rem;font-weight:600;">[DOI]</a></div></div>
+            <div class="pub-card"><div class="pub-card__title">Novel 1,4-benzothazines obliterate COX-2 mediated JAK-2/STAT-3 signals with potential regulation of oxidative and metabolic stress during colorectal cancer</div><div class="pub-card__journal">Pharmacological Research, 132, 188-203 (2018)</div><div class="pub-card__meta"><span class="pub-card__tag">Q1</span><span class="pub-card__tag--gold">Top 10%</span><span class="pub-card__tag--citations">Citations: 23</span><span class="pub-card__tag--citations">IF 12.2</span><a href="https://doi.org/10.1016/j.phrs.2017.12.010" target="_blank" style="color:var(--accent);font-size:0.78rem;font-weight:600;">[DOI]</a></div></div>
+          </div>
+        </div>
+        <button class="show-more-btn" onclick="document.getElementById('morePubs').classList.toggle('show'); this.textContent = this.textContent === 'Show all publications' ? 'Show less' : 'Show all publications'">Show all publications</button>
+        <p style="font-size:0.82rem;color:var(--text-muted);margin-top:1rem;">
+          Full list: <a href="https://scholar.google.com/citations?user=19qDl5gAAAAJ" target="_blank" style="color:var(--accent);font-weight:600;">Google Scholar</a>
+        </p>
+      </div>
+    </section>
+
+    <!-- ==================== MEMBERSHIPS & EDITORIAL ==================== -->
+    <section class="section" id="memberships">
+      <div class="container">
+        <div class="section__header">
+          <span class="section__number">09</span>
+          <h2 class="section__title">Memberships &amp; Editorial Roles</h2>
+        </div>
+        <div class="two-col-grid">
+          <div class="info-card">
+            <div class="info-card__title">Professional Memberships</div>
+            <div class="tag-list">
+              <span class="tag">NMRS (Life Member)</span>
+              <span class="tag">TBRSI (Founder Member)</span>
+              <span class="tag">ISETF (Life Member)</span>
+              <span class="tag">APNMR (Life Member)</span>
+            </div>
+          </div>
+          <div class="info-card">
+            <div class="info-card__title">Editorial &amp; Peer Review</div>
+            <p style="font-size:0.9rem;color:var(--text-secondary);margin-bottom:0.25rem;"><strong style="color:var(--text);">Reviewing Editor</strong> &mdash; Molecular Diagnostics &amp; Therapeutics</p>
+            <p style="font-size:0.9rem;color:var(--text-secondary);"><strong style="color:var(--text);">Review Editor</strong> &mdash; Frontiers in Molecular Biosciences</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== SUPERVISION ==================== -->
+    <section class="section section--alt" id="supervision">
+      <div class="container">
+        <div class="section__header">
+          <span class="section__number">10</span>
+          <h2 class="section__title">Supervision &amp; Mentoring</h2>
+        </div>
+        <div class="two-col-grid">
+          <div class="info-card">
+            <div class="info-card__title">At CBMR (Doctoral Training)</div>
+            <ul style="padding-left:1.2rem;font-size:0.88rem;color:var(--text-secondary);line-height:1.8;">
+              <li>Mentored 2 PhD scholars in metabolomics-based dissertation research</li>
+              <li>Mentored 5 MSc students in NMR-based metabolomics projects</li>
+            </ul>
+          </div>
+          <div class="info-card">
+            <div class="info-card__title">At NBAGR (Research Associate)</div>
+            <ul style="padding-left:1.2rem;font-size:0.88rem;color:var(--text-secondary);line-height:1.8;">
+              <li>Supervised 1 Senior Research Fellow</li>
+              <li>Supervised 3 PhD scholars</li>
+              <li>Supervised 1 Master's student</li>
+            </ul>
+          </div>
+        </div>
+        <p style="font-size:0.88rem;color:var(--text-secondary);margin-top:1rem;padding:1rem;background:var(--bg-card);border-radius:var(--radius-md);border:1px solid var(--border);">
+          <strong style="color:var(--text);">Academic Administration:</strong> Served as Examination Centre In-Charge Officer (3 times) for undergraduate and postgraduate examinations conducted by CSJM University.
+        </p>
+      </div>
+    </section>
+
+    <!-- ==================== AWARDS ==================== -->
+    <section class="section" id="awards">
+      <div class="container">
+        <div class="section__header">
+          <span class="section__number">11</span>
+          <h2 class="section__title">Awards &amp; Recognitions</h2>
+        </div>
+        <div class="awards-grid">
+          <span class="award-tag">ICMR-Junior Research Fellowship (2015)</span>
+          <span class="award-tag">ICMR-Senior Research Fellowship (2018)</span>
+          <span class="award-tag">CSIR-NET Lectureship (2015)</span>
+          <span class="award-tag">UPHESC Assistant Professor (2022)</span>
+          <span class="award-tag">ICMR Travel &amp; Workshop Grants</span>
+          <span class="award-tag">Best Oral/Poster Presentation Awards</span>
+          <span class="award-tag">2 Invited Lectures</span>
+          <span class="award-tag">7 Oral &amp; Poster Presentations</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== COLLABORATORS ==================== -->
+    <section class="section section--alt" id="collaborators">
+      <div class="container">
+        <div class="section__header">
+          <span class="section__number">12</span>
+          <h2 class="section__title">Key Collaborators</h2>
+        </div>
+        <div class="tag-list">
+          <span class="tag">Dr. Dinesh Kumar (CBMR, Lucknow)</span>
+          <span class="tag">Dr. Anupam Guleria (CBMR, Lucknow)</span>
+          <span class="tag">Dr. Manishi Mukesh (ICAR-NBAGR)</span>
+          <span class="tag">Prof. Martin Widschwendter (EUTOPS, Austria)</span>
+          <span class="tag">Medical University of Innsbruck (NEOVASCage)</span>
+          <span class="tag">Dr. Subash Chandra Gupta (BHU)</span>
+          <span class="tag">Dr. Narayan Prasad (SGPGIMS)</span>
+          <span class="tag">Dr. Gaurav Pandey (SGPGIMS)</span>
+          <span class="tag">Dr. Atul Rawat (SGPGIMS)</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== RESEARCH VISION ==================== -->
+    <section class="section" id="vision">
+      <div class="container">
+        <div class="section__header">
+          <span class="section__number">13</span>
+          <h2 class="section__title">Research Vision</h2>
+        </div>
+        <div class="vision-box">
+          <strong>~ Umesh</strong>
+          <p>"My long-term goal is to lead innovative metabolomics research that uncovers disease mechanisms, identifies clinically actionable biomarkers, and accelerates the translation of omics science into personalized healthcare solutions."</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== CONTACT ==================== -->
+    <section class="section section--alt section--last" id="contact">
+      <div class="container">
+        <div class="contact-layout">
+          <div class="contact__content">
+            <span class="section__number">14</span>
+            <h2 class="section__title">Get in Touch</h2>
+            <p class="section__subtitle">Open to research collaborations, academic discussions, and partnership opportunities in metabolomics, biomarker discovery, and multi-omics integration.</p>
+          </div>
+          <div class="contact__links">
+            <a href="mailto:kumarumesh022@gmail.com" class="contact__link">
+              <span class="contact__link-label">Email</span>
+              <span class="contact__link-value">kumarumesh022@gmail.com</span>
+            </a>
+            <a href="tel:+919517396699" class="contact__link">
+              <span class="contact__link-label">Phone</span>
+              <span class="contact__link-value">+91 9517396699</span>
+            </a>
+            <a href="https://scholar.google.com/citations?user=19qDl5gAAAAJ" target="_blank" class="contact__link">
+              <span class="contact__link-label">Google Scholar</span>
+              <span class="contact__link-value">View Profile</span>
+            </a>
+            <a href="https://orcid.org/0000-0002-0961-8048" target="_blank" class="contact__link">
+              <span class="contact__link-label">ORCID</span>
+              <span class="contact__link-value">0000-0002-0961-8048</span>
+            </a>
+            <a href="https://www.researchgate.net/profile/Umesh-Kumar-20" target="_blank" class="contact__link">
+              <span class="contact__link-label">ResearchGate</span>
+              <span class="contact__link-value">View Profile</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__left">
+        <p>&copy; 2026 Dr. Umesh Kumar</p>
+        <span class="footer__tagline">Translating omics data into clinical solutions</span>
+      </div>
+      <a href="#hero" class="footer__top">Back to top &uarr;</a>
+    </div>
+  </footer>
+
+  <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Toggle dark mode" title="Toggle dark mode">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="theme-toggle__icon"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+  </button>
+
+  <script>
+    // Progress bar
+    const progressBar = document.getElementById('progress-bar');
+    window.addEventListener('scroll', () => {
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+      progressBar.style.width = progress + '%';
+    });
+
+    // Header scroll effect
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => {
+      header.classList.toggle('header--scrolled', window.scrollY > 20);
+    });
+
+    // Mobile nav toggle
+    const toggle = document.getElementById('header-toggle');
+    const nav = document.getElementById('header-nav');
+    toggle.addEventListener('click', () => {
+      const expanded = toggle.getAttribute('aria-expanded') === 'true';
+      toggle.setAttribute('aria-expanded', !expanded);
+      nav.classList.toggle('header__nav--open');
+    });
+    document.querySelectorAll('.header__link').forEach(link => {
+      link.addEventListener('click', () => {
+        nav.classList.remove('header__nav--open');
+        toggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    // Active nav link
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.header__link');
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(s => {
+        const top = s.offsetTop - 120;
+        if (window.scrollY >= top) current = s.getAttribute('id');
+      });
+      navLinks.forEach(l => {
+        l.classList.toggle('header__link--active', l.getAttribute('href') === '#' + current);
+      });
+    });
+
+    // Theme toggle
+    const themeToggle = document.getElementById('theme-toggle');
+    const saved = localStorage.getItem('theme');
+    if (saved === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+    themeToggle.addEventListener('click', () => {
+      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      document.documentElement.setAttribute('data-theme', isDark ? '' : 'dark');
+      localStorage.setItem('theme', isDark ? '' : 'dark');
+    });
+
+    // Reveal animations — simple fade when scrolling into view
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) e.target.classList.add('reveal--visible');
+      });
+    }, { threshold: 0.05 });
+    document.querySelectorAll('.section, .research-card, .pub-card, .timeline-item, .skill-card, .info-card').forEach(el => {
+      el.classList.add('reveal');
+      observer.observe(el);
+    });
+  </script>
+</body>
+</html>
