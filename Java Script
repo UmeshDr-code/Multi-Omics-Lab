@@ -1,0 +1,55 @@
+// ==================== GOOGLE SCHOLAR METRICS ====================
+
+async function loadScholarMetrics() {
+  try {
+    const response = await fetch('./metrics.json', {
+      cache: 'no-store'
+    });
+
+    if (!response.ok) {
+      throw new Error('Could not load metrics.json');
+    }
+
+    const metrics = await response.json();
+
+    // Hero metrics
+    const citations = document.getElementById('scholar-citations');
+    const hIndex = document.getElementById('scholar-h-index');
+    const i10Index = document.getElementById('scholar-i10-index');
+
+    if (citations) {
+      citations.textContent = Number(metrics.citations).toLocaleString();
+    }
+
+    if (hIndex) {
+      hIndex.textContent = metrics.h_index;
+    }
+
+    if (i10Index) {
+      i10Index.textContent = metrics.i10_index;
+    }
+
+    // About section
+    const aboutCitations = document.getElementById('about-citations');
+    const aboutHIndex = document.getElementById('about-h-index');
+    const aboutI10Index = document.getElementById('about-i10-index');
+
+    if (aboutCitations) {
+      aboutCitations.textContent =
+        Number(metrics.citations).toLocaleString();
+    }
+
+    if (aboutHIndex) {
+      aboutHIndex.textContent = metrics.h_index;
+    }
+
+    if (aboutI10Index) {
+      aboutI10Index.textContent = metrics.i10_index;
+    }
+
+  } catch (error) {
+    console.error('Google Scholar metrics error:', error);
+  }
+}
+
+loadScholarMetrics();
