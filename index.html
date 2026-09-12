@@ -1183,6 +1183,38 @@ comprising 21 Q1 and 20 Q2 papers, with 9 as first author,
       el.classList.add('reveal');
       observer.observe(el);
     });
+    async function loadScholarMetrics() {
+  try {
+    const response = await fetch('./metrics.json', {
+      cache: 'no-store'
+    });
+
+    const metrics = await response.json();
+
+    document.getElementById('scholar-citations').textContent =
+      Number(metrics.citations).toLocaleString();
+
+    document.getElementById('scholar-h-index').textContent =
+      metrics.h_index;
+
+    document.getElementById('scholar-i10-index').textContent =
+      metrics.i10_index;
+
+    document.getElementById('about-citations').textContent =
+      Number(metrics.citations).toLocaleString();
+
+    document.getElementById('about-h-index').textContent =
+      metrics.h_index;
+
+    document.getElementById('about-i10-index').textContent =
+      metrics.i10_index;
+
+  } catch (error) {
+    console.error('Google Scholar metrics error:', error);
+  }
+}
+
+loadScholarMetrics();
   </script>
 </body>
 </html>
